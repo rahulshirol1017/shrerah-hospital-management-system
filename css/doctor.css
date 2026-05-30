@@ -1,0 +1,172 @@
+/* ==========================================
+   DOCTOR PORTAL SPECIFIC STYLES
+   ========================================== */
+
+/* Shared dashboard layouts are handled via importing common layout declarations */
+@import url('admin.css');
+
+.assigned-patients-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-lg);
+}
+
+.assigned-patient-card {
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: var(--space-lg);
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 180px;
+  transition: all var(--transition-normal);
+}
+.assigned-patient-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lg);
+  border-color: var(--primary-light);
+}
+
+.assigned-pat-header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+}
+.assigned-pat-avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background-color: var(--accent-soft);
+  color: var(--accent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 1rem;
+}
+.assigned-pat-meta h4 {
+  font-size: 1.05rem;
+  font-weight: 700;
+}
+.assigned-pat-meta p {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+.assigned-pat-body {
+  border-top: 1px solid var(--border-color);
+  padding-top: var(--space-sm);
+  margin-top: var(--space-sm);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  font-size: 0.8rem;
+}
+.assigned-pat-body div span {
+  display: block;
+  font-size: 0.7rem;
+  color: var(--text-light);
+  text-transform: uppercase;
+}
+.assigned-pat-body div p {
+  font-weight: 600;
+}
+
+/* Multi-Medicine Prescription creation form styling */
+.prescription-layout {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-xl);
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.prescription-form-card {
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: var(--space-xl);
+  box-shadow: var(--shadow-sm);
+}
+
+.medicines-list-container {
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: var(--space-md);
+  background-color: #fafbfc;
+  margin-bottom: var(--space-md);
+}
+
+.medicine-entry-row {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr 1fr 1fr 40px;
+  gap: var(--space-sm);
+  align-items: center;
+  margin-bottom: var(--space-sm);
+  background-color: var(--bg-card);
+  padding: var(--space-sm);
+  border-radius: var(--radius-sm);
+  border: 1px solid #f1f5f9;
+  animation: fadeIn 0.3s ease forwards;
+}
+
+.medicine-entry-row input {
+  padding: 0.5rem var(--space-sm);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-sm);
+  font-size: 0.85rem;
+}
+
+.medicine-entry-row input:focus {
+  border-color: var(--primary);
+}
+
+.remove-med-btn {
+  width: 32px;
+  height: 32px;
+  border-radius: var(--radius-sm);
+  color: var(--danger);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.remove-med-btn:hover {
+  background-color: var(--danger-light);
+}
+
+.add-med-trigger-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-xs);
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--primary);
+  padding: var(--space-xs) var(--space-sm);
+  border: 1px solid var(--primary);
+  border-radius: var(--radius-sm);
+  margin-top: var(--space-xs);
+  transition: all var(--transition-fast);
+}
+.add-med-trigger-btn:hover {
+  background-color: rgba(15, 76, 129, 0.05);
+}
+
+@media (max-width: 992px) {
+  .assigned-patients-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (max-width: 768px) {
+  .assigned-patients-grid {
+    grid-template-columns: 1fr;
+  }
+  .medicine-entry-row {
+    grid-template-columns: 1fr;
+    gap: var(--space-xs);
+    padding: var(--space-md);
+  }
+  .remove-med-btn {
+    align-self: flex-end;
+  }
+}

@@ -1,0 +1,65 @@
+[
+  {
+    "id": "ADMIN-88",
+    "email": "admin@auracare.com",
+    "password": "admin123",
+    "role": "Admin",
+    "name": "Rahul Shirol"
+  },
+  {
+    "id": "DOC-2001",
+    "email": "sarah@auracare.com",
+    "password": "doctor123",
+    "role": "Doctor",
+    "name": "Dr. Sarah Alston"
+  },
+  {
+    "id": "DOC-2002",
+    "email": "vikram@auracare.com",
+    "password": "doctor123",
+    "role": "Doctor",
+    "name": "Dr. Vikram K. Malhotra"
+  },
+  {
+    "id": "DOC-2003",
+    "email": "david@auracare.com",
+    "password": "doctor123",
+    "role": "Doctor",
+    "name": "Dr. David E. Thorne"
+  },
+  {
+    "id": "DOC-2004",
+    "email": "anita@auracare.com",
+    "password": "doctor123",
+    "role": "Doctor",
+    "name": "Dr. Anita H. Desai"
+  },
+  {
+    "id": "PAT-1001",
+    "email": "ronald@example.com",
+    "password": "password123",
+    "role": "Patient",
+    "name": "Ronald M. Henderson"
+  },
+  {
+    "id": "PAT-1002",
+    "email": "patient@example.com",
+    "password": "password123",
+    "role": "Patient",
+    "name": "Eleanor S. Vance"
+  },
+  {
+    "id": "PAT-1003",
+    "email": "aarav@example.com",
+    "password": "password123",
+    "role": "Patient",
+    "name": "Aarav N. Patel"
+  },
+  {
+    "id": "PAT-1004",
+    "email": "miriam@example.com",
+    "password": "password123",
+    "role": "Patient",
+    "name": "Miriam E. Sterling"
+  }
+]

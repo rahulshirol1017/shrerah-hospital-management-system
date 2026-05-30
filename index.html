@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ShreRah Hospital - Advanced Healthcare, Personalized Care</title>
+  <meta name="description" content="Welcome to ShreRah Hospital, a premium clinical ecosystem offering enterprise-grade patient workflows, scheduling systems, and doctor prescription portals.">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    /* Add Landing page specific section styling to index.html to keep modular stylesheets clean */
+    .landing-section {
+      padding: var(--space-xxl) var(--space-xl);
+      max-width: 1400px;
+      width: 100%;
+      margin: 0 auto;
+      border-top: 1px solid var(--border-color);
+    }
+    .landing-section h2 {
+      font-size: 2.25rem;
+      font-weight: 800;
+      color: var(--primary-dark);
+      text-align: center;
+      margin-bottom: var(--space-md);
+      letter-spacing: -1px;
+    }
+    .landing-section h2 span {
+      background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .section-subtitle {
+      text-align: center;
+      color: var(--text-muted);
+      max-width: 600px;
+      margin: 0 auto var(--space-xxl) auto;
+      font-size: 1.05rem;
+    }
+    
+    /* About styling */
+    .about-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-xxl);
+      align-items: center;
+    }
+    .about-text p {
+      font-size: 1.15rem;
+      color: var(--text-main);
+      line-height: 1.8;
+      margin-bottom: var(--space-lg);
+    }
+    .about-stats {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-lg);
+    }
+    .about-stat-card {
+      background-color: var(--bg-main);
+      border-radius: var(--radius-md);
+      padding: var(--space-lg);
+      border: 1px solid var(--border-color);
+    }
+    .about-stat-card h3 {
+      font-size: 2rem;
+      color: var(--accent);
+      font-weight: 700;
+      margin-bottom: var(--space-xs);
+    }
+    .about-stat-card p {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      font-weight: 600;
+    }
+
+    /* Services styling */
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--space-xl);
+    }
+    .service-card {
+      background-color: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: var(--space-xl);
+      box-shadow: var(--shadow-sm);
+      transition: all var(--transition-normal);
+    }
+    .service-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-lg);
+      border-color: var(--primary-light);
+    }
+    .service-icon-wrap {
+      width: 48px;
+      height: 48px;
+      border-radius: var(--radius-sm);
+      background-color: var(--accent-soft);
+      color: var(--accent);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: var(--space-lg);
+    }
+    .service-icon-wrap svg {
+      width: 24px;
+      height: 24px;
+    }
+    .service-card h3 {
+      font-size: 1.25rem;
+      margin-bottom: var(--space-sm);
+      color: var(--primary-dark);
+    }
+    .service-card p {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      line-height: 1.6;
+    }
+
+    /* Contact styling */
+    .contact-layout {
+      max-width: 800px;
+      margin: 0 auto;
+      background-color: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-lg);
+      padding: var(--space-xxl);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-xxl);
+    }
+    .contact-info-block {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-lg);
+    }
+    .contact-item {
+      display: flex;
+      align-items: flex-start;
+      gap: var(--space-md);
+    }
+    .contact-item-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background-color: rgba(15, 76, 129, 0.05);
+      color: var(--primary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .contact-item-icon svg {
+      width: 20px;
+      height: 20px;
+    }
+    .contact-item-details h4 {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      margin-bottom: 2px;
+    }
+    .contact-item-details p,
+    .contact-item-details a {
+      font-size: 1.15rem;
+      font-weight: 600;
+      color: var(--primary-dark);
+    }
+    .contact-item-details a:hover {
+      color: var(--secondary);
+      text-decoration: underline;
+    }
+    
+    .contact-image-wrap {
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      box-shadow: var(--shadow-sm);
+    }
+    .contact-image-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    @media (max-width: 992px) {
+      .about-layout { grid-template-columns: 1fr; gap: var(--space-xl); }
+      .services-grid { grid-template-columns: repeat(2, 1fr); }
+      .contact-layout { grid-template-columns: 1fr; gap: var(--space-xl); padding: var(--space-xl); }
+    }
+    @media (max-width: 768px) {
+      .services-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <div id="landing-page" class="fade-in">
+    <!-- Landing Navigation -->
+    <nav class="landing-nav">
+      <div class="logo-container">
+        <svg class="logo-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 10.5V20a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2v-9.5M3 10h18M12 4v12m-4-6h8"></path>
+        </svg>
+        <span class="hospital-name">ShreRah<span> Hospital</span></span>
+      </div>
+      <div class="nav-links">
+        <a href="#" class="active">Home</a>
+        <a href="#about">About</a>
+        <a href="#services">Services</a>
+        <a href="#contact">Contact</a>
+      </div>
+      <button class="btn btn-primary" onclick="window.location.href='/pages/auth.html'">Portal Login</button>
+    </nav>
+
+    <!-- Hero Section -->
+    <main class="landing-hero">
+      <div class="hero-content">
+        <div class="hero-tagline">
+          <svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
+          </svg>
+          Clinical Excellence & Trust
+        </div>
+        <h1 class="hero-title">Advancing the Future of <span>Healthcare</span></h1>
+        <p class="hero-desc">
+          Welcome to ShreRah Hospital's premium medical management ecosystem. Streamlining patient workflows, orchestrating clinical expertise, and managing administrative intelligence in one elegant, unified framework.
+        </p>
+        <div class="hero-buttons">
+          <button class="btn btn-primary btn-accent" onclick="window.location.href='/pages/auth.html'">
+            <span>Get Started</span>
+            <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- Hero Image and overlays -->
+      <div class="hero-image-container">
+        <img class="hero-image" src="https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&q=80&w=1200" alt="ShreRah Hospital Premium Clinical Environment">
+        <div class="hero-image-overlay"></div>
+        <div class="hero-stats-overlay">
+          <div class="stat-item">
+            <span class="stat-val">120+</span>
+            <span class="stat-lbl">Consultants</span>
+          </div>
+          <div class="stat-item" style="border-left: 1px solid var(--border-color); border-right: 1px solid var(--border-color); padding: 0 var(--space-md);">
+            <span class="stat-val">15k+</span>
+            <span class="stat-lbl">Happy Patients</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-val">99.8%</span>
+            <span class="stat-lbl">Care Rating</span>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- ABOUT SECTION -->
+    <section class="landing-section" id="about">
+      <h2>About <span>ShreRah Hospital</span></h2>
+      <p class="section-subtitle">Striving to provide quality treatment, accurate diagnosis, and compassionate support to every patient while maintaining the highest standards of medical excellence.</p>
+      
+      <div class="about-layout">
+        <div class="about-text">
+          <p>
+            ShreRah Hospital is committed to delivering exceptional healthcare services through experienced medical professionals, advanced technology, and patient-centered care. We believe that clinical brilliance goes hand-in-hand with deep personal warmth.
+          </p>
+          <p>
+            Whether handling complex diagnostics or routine health wellness routines, ShreRah Hospital supports you with state-of-the-art technological infrastructures and dedicated specialist expertise.
+          </p>
+        </div>
+        <div class="about-stats">
+          <div class="about-stat-card">
+            <h3>24/7</h3>
+            <p>Clinical Service Availability</p>
+          </div>
+          <div class="about-stat-card">
+            <h3>99.9%</h3>
+            <p>Surgical Precision Rate</p>
+          </div>
+          <div class="about-stat-card">
+            <h3>15+</h3>
+            <p>Specialty Departments</p>
+          </div>
+          <div class="about-stat-card">
+            <h3>AC-Ref</h3>
+            <p>JCI Quality Certified</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SERVICES SECTION -->
+    <section class="landing-section" id="services">
+      <h2>Clinical <span>Departments & Services</span></h2>
+      <p class="section-subtitle">Comprehensive medical disciplines and administration tools structured around maximum patient safety and efficiency.</p>
+      
+      <div class="services-grid">
+        <div class="service-card">
+          <div class="service-icon-wrap">
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path></svg>
+          </div>
+          <h3>General Consultation</h3>
+          <p>Expert medical consultations for routine health concerns and preventive care, conducted by certified family consultants.</p>
+        </div>
+
+        <div class="service-card">
+          <div class="service-icon-wrap">
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>
+          </div>
+          <h3>Specialist Care</h3>
+          <p>Access to experienced specialists across multiple medical disciplines including Cardiology, Neurology, and Pediatrics.</p>
+        </div>
+
+        <div class="service-card">
+          <div class="service-icon-wrap">
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 9.172V5L8 4z"></path></svg>
+          </div>
+          <h3>Diagnostic Services</h3>
+          <p>Accurate laboratory testing and diagnostic procedures using modern, high-grade imaging and biochemical analysis equipment.</p>
+        </div>
+
+        <div class="service-card">
+          <div class="service-icon-wrap">
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
+          </div>
+          <h3>Appointment Management</h3>
+          <p>Easy appointment scheduling and healthcare coordination designed to reduce waiting lists and manage calendar queues seamlessly.</p>
+        </div>
+
+        <div class="service-card">
+          <div class="service-icon-wrap">
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
+          </div>
+          <h3>Prescription Management</h3>
+          <p>Digital prescription records for convenient access, treatment tracking, and immediate retrieval for follow-up consult sessions.</p>
+        </div>
+
+        <div class="service-card">
+          <div class="service-icon-wrap">
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path></svg>
+          </div>
+          <h3>Patient Care</h3>
+          <p>Personalized, compassionate healthcare services focused on patient well-being, long-term safety, and clinical recovery.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT SECTION -->
+    <section class="landing-section" id="contact" style="background-color: var(--bg-main); padding-bottom: var(--space-xxl);">
+      <h2>Contact <span>ShreRah Hospital</span></h2>
+      <p class="section-subtitle">Reach out to our information desk or administrative team for queries, portfolios, or quick assistance.</p>
+      
+      <div class="contact-layout">
+        <div class="contact-info-block">
+          
+          <div class="contact-item">
+            <div class="contact-item-icon">
+              <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.94.725l.548 2.2a1 1 0 01-.321.988l-1.305.98a10.582 10.582 0 004.872 4.872l.98-1.305a1 1 0 01.988-.321l2.2.548a1 1 0 01.725.94V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path></svg>
+            </div>
+            <div class="contact-item-details">
+              <h4>Phone Line</h4>
+              <p>83100693888</p>
+            </div>
+          </div>
+
+          <div class="contact-item">
+            <div class="contact-item-icon">
+              <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+            </div>
+            <div class="contact-item-details">
+              <h4>Email Desk</h4>
+              <p>rshirol958</p>
+            </div>
+          </div>
+
+          <div class="contact-item">
+            <div class="contact-item-icon">
+              <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"></path></svg>
+            </div>
+            <div class="contact-item-details">
+              <h4>Instagram Portfolio</h4>
+              <a href="https://www.instagram.com/rahul__shirol?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank">@rahul__shirol</a>
+            </div>
+          </div>
+        </div>
+        
+        <div class="contact-image-wrap">
+          <img src="https://images.unsplash.com/photo-1586773860418-d3b97998c06d?auto=format&fit=crop&q=80&w=800" alt="Hospital Information Desk Workspace">
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer style="background-color: var(--primary-dark); color: rgba(255,255,255,0.85); text-align: center; padding: var(--space-xl) var(--space-md); font-size: 0.9rem; border-top: 1px solid rgba(255,255,255,0.1);">
+      <div style="max-width: 1200px; margin: 0 auto; display: flex; flex-direction: column; gap: var(--space-sm); align-items: center;">
+        <h4 style="color: var(--text-white); font-size: 1.25rem; font-weight: 700; margin-bottom: 2px;">ShreRah Hospital</h4>
+        <p style="font-style: italic; opacity: 0.9; font-size: 0.85rem; margin-bottom: var(--space-xs);">"Compassion. Care. Excellence."</p>
+        <div style="display: flex; gap: var(--space-xl); margin: var(--space-xs) 0; font-size: 0.85rem;">
+          <span><strong>Phone:</strong> 83100693888</span>
+          <span><strong>Instagram:</strong> <a href="https://www.instagram.com/rahul__shirol?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" style="color: var(--secondary); text-decoration: underline;">@rahul__shirol</a></span>
+        </div>
+        <p style="font-size: 0.75rem; opacity: 0.7; margin-top: var(--space-xs);">Developed by Rahul Shirol | ShreRah Hospital Network © 2026. All rights reserved.</p>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    fetch('/api/auth/me')
+      .then(res => res.json())
+      .then(data => {
+        if (data.user) {
+          window.location.href = `/pages/${data.user.role.toLowerCase()}.html`;
+        }
+      });
+  </script>
+</body>
+</html>

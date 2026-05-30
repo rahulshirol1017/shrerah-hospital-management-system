@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ShreRah Hospital - Portal Identity Authentication</title>
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/auth.css">
+</head>
+<body>
+
+  <div id="auth-page">
+    <div class="auth-wrapper">
+      <!-- Main authentication panel -->
+      <div class="auth-main-panel">
+        <div class="logo-container" style="margin-bottom: var(--space-xl);">
+          <svg class="logo-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="width: 32px; height: 32px;" xmlns="http://www.w3.org/2000/svg">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 10.5V20a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2v-9.5M3 10h18M12 4v12m-4-6h8"></path>
+          </svg>
+          <span class="hospital-name" style="cursor: pointer;" onclick="window.location.href='/'">ShreRah<span> Hospital</span></span>
+        </div>
+
+        <!-- Form Tab Headers -->
+        <div class="auth-tab-selectors">
+          <button class="auth-tab-btn active" id="btn-tab-signin" onclick="toggleAuthForm('signin')">Sign In</button>
+          <button class="auth-tab-btn" id="btn-tab-signup" onclick="toggleAuthForm('signup')">Patient Sign Up</button>
+        </div>
+
+        <!-- Form 1: Sign In (Zero manual Role selector) -->
+        <div class="auth-form-card active" id="auth-signin-card">
+          <form id="form-signin" onsubmit="handleSignInSubmit(event)">
+            <div class="form-grid">
+              <div class="form-group">
+                <label for="login-email">Email ID</label>
+                <input type="email" id="login-email" placeholder="e.g. pat@example.com" required>
+              </div>
+              
+              <div class="form-group">
+                <label for="login-password">Password</label>
+                <input type="password" id="login-password" placeholder="••••••••" required>
+              </div>
+
+              <div style="display: flex; gap: var(--space-md); margin-top: var(--space-md);">
+                <button type="submit" class="btn btn-primary" style="flex: 1;">Login to Portal</button>
+                <button type="button" class="btn btn-secondary" onclick="window.location.href='/'">Back</button>
+              </div>
+            </div>
+          </form>
+        </div>
+
+        <!-- Form 2: Patient Registration Sign Up -->
+        <div class="auth-form-card" id="auth-signup-card">
+          <form id="form-signup" onsubmit="handleSignUpSubmit(event)">
+            <div class="form-grid">
+              
+              <h4 style="font-size: 0.9rem; text-transform: uppercase; color: var(--primary); border-bottom: 1px solid var(--border-color); padding-bottom: 2px;">Personal Details</h4>
+              <div class="form-group">
+                <label for="reg-name">Full Name</label>
+                <input type="text" id="reg-name" placeholder="e.g. Johnathan Miller" required>
+                <span class="auth-field-error" id="err-reg-name">Full name is required.</span>
+              </div>
+
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="reg-gender">Gender</label>
+                  <select id="reg-gender" required>
+                    <option value="" disabled selected>Select gender</option>
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                    <option value="Other">Other</option>
+                  </select>
+                  <span class="auth-field-error" id="err-reg-gender">Gender is required.</span>
+                </div>
+                <div class="form-group">
+                  <label for="reg-dob">Date of Birth</label>
+                  <input type="date" id="reg-dob" required>
+                  <span class="auth-field-error" id="err-reg-dob">Date of birth is required.</span>
+                </div>
+              </div>
+
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="reg-height">Height (cm)</label>
+                  <input type="number" id="reg-height" placeholder="e.g. 175" min="30" max="300" required>
+                  <span class="auth-field-error" id="err-reg-height">Valid height required.</span>
+                </div>
+                <div class="form-group">
+                  <label for="reg-weight">Weight (kg)</label>
+                  <input type="number" id="reg-weight" placeholder="e.g. 70" min="2" max="500" required>
+                  <span class="auth-field-error" id="err-reg-weight">Valid weight required.</span>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="reg-blood">Blood Group</label>
+                <select id="reg-blood" required>
+                  <option value="" disabled selected>Select blood type</option>
+                  <option value="A+">A+</option>
+                  <option value="A-">A-</option>
+                  <option value="B+">B+</option>
+                  <option value="B-">B-</option>
+                  <option value="AB+">AB+</option>
+                  <option value="AB-">AB-</option>
+                  <option value="O+">O+</option>
+                  <option value="O-">O-</option>
+                </select>
+                <span class="auth-field-error" id="err-reg-blood">Blood group is required.</span>
+              </div>
+
+              <h4 style="font-size: 0.9rem; text-transform: uppercase; color: var(--primary); border-bottom: 1px solid var(--border-color); padding-bottom: 2px; margin-top: var(--space-sm);">Contact Details</h4>
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="reg-contact">Mobile Number</label>
+                  <input type="tel" id="reg-contact" placeholder="10-digit number" required>
+                  <span class="auth-field-error" id="err-reg-contact">Valid 10-digit number required.</span>
+                </div>
+                <div class="form-group">
+                  <label for="reg-email">Email ID</label>
+                  <input type="email" id="reg-email" placeholder="e.g. pat@example.com" required>
+                  <span class="auth-field-error" id="err-reg-email">Valid email format required.</span>
+                </div>
+              </div>
+
+              <h4 style="font-size: 0.9rem; text-transform: uppercase; color: var(--primary); border-bottom: 1px solid var(--border-color); padding-bottom: 2px; margin-top: var(--space-sm);">Account Password</h4>
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="reg-password">Password</label>
+                  <input type="password" id="reg-password" placeholder="At least 6 characters" required>
+                  <span class="auth-field-error" id="err-reg-password">Min 6 characters required.</span>
+                </div>
+                <div class="form-group">
+                  <label for="reg-confirm">Confirm Password</label>
+                  <input type="password" id="reg-confirm" placeholder="Re-enter password" required>
+                  <span class="auth-field-error" id="err-reg-confirm">Passwords must match.</span>
+                </div>
+              </div>
+
+              <div style="display: flex; gap: var(--space-md); margin-top: var(--space-md);">
+                <button type="submit" class="btn btn-primary" style="flex: 1;">Complete Sign Up</button>
+                <button type="button" class="btn btn-secondary" onclick="window.location.href='/'">Back</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <!-- Info panel Side Column -->
+      <div class="auth-info-panel">
+        <div class="auth-info-header">
+          <h2>Clinical Digital Workspace</h2>
+          <p>Supervise appointments, contact portfolios, treatment histories, and doctor-issued prescriptions under our unified clinical system.</p>
+        </div>
+
+        <div class="auth-info-list">
+          <div class="auth-info-item">
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
+            </svg>
+            <div>
+              <h4>Encrypted Data Privacy</h4>
+              <p>Adhering to security compliances to safeguard clinical charts.</p>
+            </div>
+          </div>
+          <div class="auth-info-item">
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+            </svg>
+            <div>
+              <h4>24/7 Scheduling & Logs</h4>
+              <p>Patients can request consult sessions and view prescriptions anytime.</p>
+            </div>
+          </div>
+        </div>
+
+        <div style="font-size: 0.75rem; opacity: 0.65; text-align: center;">
+          ShreRah Hospital Network © 2026. All rights Reserved.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="toast-container" id="toast-container"></div>
+
+  <script src="/js/common.js"></script>
+  <script src="/js/auth.js"></script>
+</body>
+</html>

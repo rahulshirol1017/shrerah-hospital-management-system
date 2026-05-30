@@ -1,0 +1,35 @@
+[
+  {
+    "id": "APT-3001",
+    "patientId": "PAT-1001",
+    "doctorId": "DOC-2001",
+    "date": "2026-05-31",
+    "time": "10:30",
+    "reason": "Regular Heart Valve Assessment",
+    "status": "Completed",
+    "diagnosis": {
+      "symptoms": "sour throat",
+      "details": "asthma",
+      "observations": "",
+      "notes": ""
+    }
+  },
+  {
+    "id": "APT-3002",
+    "patientId": "PAT-1002",
+    "doctorId": "DOC-2004",
+    "date": "2026-05-31",
+    "time": "11:45",
+    "reason": "Pediatric Wellness Routine",
+    "status": "Scheduled"
+  },
+  {
+    "id": "APT-3003",
+    "patientId": "PAT-1003",
+    "doctorId": "DOC-2002",
+    "date": "2026-06-01",
+    "time": "09:15",
+    "reason": "Post-op Cranial Nerve Followup",
+    "status": "Scheduled"
+  }
+]

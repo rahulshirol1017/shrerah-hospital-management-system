@@ -1,0 +1,712 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ShreRah Hospital - Administrative Portal</title>
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/admin.css">
+</head>
+<body>
+
+  <div id="dashboard-panel">
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar" id="sidebar-nav">
+      <div>
+        <div class="sidebar-header">
+          <div class="logo-container">
+            <svg class="logo-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 10.5V20a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2v-9.5M3 10h18M12 4v12m-4-6h8"></path>
+            </svg>
+            <span class="hospital-name">Aura<span>Care</span></span>
+          </div>
+        </div>
+        
+        <nav class="sidebar-menu">
+          <button class="sidebar-link active" onclick="switchView('dashboard', this)">
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v4a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v4a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v4a2 2 0 01-2 2H6a2 2 0 01-2-2v-4zM14 16a2 2 0 012-2h2a2 2 0 012 2v4a2 2 0 01-2 2h-2a2 2 0 01-2-2v-4z"></path></svg>
+            <span>Dashboard</span>
+          </button>
+          
+          <button class="sidebar-link" onclick="switchView('patients', this)">
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
+            <span>Patients</span>
+          </button>
+          
+          <button class="sidebar-link" onclick="switchView('doctors', this)">
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>
+            <span>Doctors</span>
+          </button>
+          
+          <button class="sidebar-link" onclick="switchView('appointments', this)">
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
+            <span>Appointments</span>
+          </button>
+          
+          <button class="sidebar-link" onclick="switchView('billing', this)">
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z"></path></svg>
+            <span>Billing</span>
+          </button>
+
+          <button class="sidebar-link" onclick="switchView('prescriptions', this)">
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
+            <span>Prescriptions</span>
+          </button>
+        </nav>
+      </div>
+
+      <div class="sidebar-footer">
+        <button class="sidebar-logout-btn" onclick="handleLogOut()">
+          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"></path></svg>
+          <span>Sign Out</span>
+        </button>
+      </div>
+    </aside>
+
+    <!-- Main Content Workspace -->
+    <div class="dashboard-body">
+      <header class="dashboard-header">
+        <div class="header-title-section">
+          <button class="menu-toggle btn-icon" id="toggle-sidebar-btn" aria-label="Toggle Sidebar">
+            <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+          </button>
+          <h1 class="header-title" id="current-view-title">Dashboard Overview</h1>
+        </div>
+
+        <div class="header-user-section">
+          <div class="header-date-time">
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+            <span id="date-string">Sunday, May 31, 2026</span>
+          </div>
+
+          <div class="header-user-profile">
+            <div class="user-avatar">AD</div>
+            <div class="user-info">
+              <span class="user-name">Rahul Shirol</span>
+              <span class="user-role">Hospital Administrator</span>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <main class="dashboard-content">
+
+        <!-- ==========================================
+             SUBVIEW: DASHBOARD OVERVIEW (NO DR, NO BOOKINGS SHORTCUTS)
+             ========================================== -->
+        <section id="view-dashboard" class="view-section active">
+          <div class="overview-welcome" style="background: linear-gradient(135deg, #1e3a8a 0%, #0f172a 100%);">
+            <div class="welcome-text">
+              <h2>ShreRah Administration Roster</h2>
+              <p>Global monitor portal for patients, clinical duty schedules, drug prescriptions, and invoices.</p>
+            </div>
+          </div>
+
+          <div class="metrics-grid">
+            <div class="metric-card">
+              <div class="metric-icon-box primary">
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
+              </div>
+              <div class="metric-info">
+                <span class="metric-label">Total Patients</span>
+                <span class="metric-val" id="metric-patients">0</span>
+              </div>
+            </div>
+
+            <div class="metric-card">
+              <div class="metric-icon-box accent">
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>
+              </div>
+              <div class="metric-info">
+                <span class="metric-label">Doctors</span>
+                <span class="metric-val" id="metric-doctors">0</span>
+              </div>
+            </div>
+
+            <div class="metric-card">
+              <div class="metric-icon-box success">
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
+              </div>
+              <div class="metric-info">
+                <span class="metric-label">Appointments Today</span>
+                <span class="metric-val" id="metric-appointments">0</span>
+              </div>
+            </div>
+
+            <div class="metric-card">
+              <div class="metric-icon-box warning">
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z"></path></svg>
+              </div>
+              <div class="metric-info">
+                <span class="metric-label">Pending Invoices</span>
+                <span class="metric-val" id="metric-billing">0</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="dashboard-grid">
+            <div class="dashboard-panel-box">
+              <div class="panel-box-header">
+                <span class="panel-box-title">Recent Appointments</span>
+                <button class="btn btn-secondary" style="padding: 0.4rem 0.8rem; font-size: 0.8rem;" onclick="switchSidebarTab('appointments')">View All</button>
+              </div>
+              <div style="overflow-x: auto;">
+                <table class="clean-table">
+                  <thead>
+                    <tr>
+                      <th>Patient</th>
+                      <th>Consultant</th>
+                      <th>Date / Time</th>
+                      <th>Status</th>
+                    </tr>
+                  </thead>
+                  <tbody id="overview-appointments-table"></tbody>
+                </table>
+              </div>
+            </div>
+
+            <div class="dashboard-panel-box">
+              <div class="panel-box-header">
+                <span class="panel-box-title">On-Duty Doctors</span>
+                <button class="btn btn-secondary" style="padding: 0.4rem 0.8rem; font-size: 0.8rem;" onclick="switchSidebarTab('doctors')">View All</button>
+              </div>
+              <div class="quick-doctor-list" id="overview-doctors-list"></div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ==========================================
+             SUBVIEW: PATIENTS
+             ========================================== -->
+        <section id="view-patients" class="view-section">
+          <div class="view-header">
+            <div class="view-header-title">
+              <h2>Patient Database</h2>
+              <p>Manage and track admitting schedules, demographic logs, and patient assignments.</p>
+            </div>
+            <button class="btn btn-primary" onclick="openDrawer('patient-drawer')">
+              <svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path></svg>
+              Register Patient
+            </button>
+          </div>
+
+          <div class="table-controls">
+            <div class="search-box">
+              <input type="text" id="patient-search-input" placeholder="Search patients by name or ID..." onkeyup="filterPatients()">
+              <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+            </div>
+          </div>
+
+          <div class="table-responsive">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>Patient ID</th>
+                  <th>Patient Name</th>
+                  <th>Age / Gender</th>
+                  <th>Blood Group</th>
+                  <th>Contact Info</th>
+                  <th>Admission Date</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody id="patients-table-body"></tbody>
+            </table>
+          </div>
+        </section>
+
+        <!-- ==========================================
+             SUBVIEW: DOCTORS
+             ========================================== -->
+        <section id="view-doctors" class="view-section">
+          <div class="view-header">
+            <div class="view-header-title">
+              <h2>Clinical Doctors</h2>
+              <p>Manage list of consultants, qualifications, credentials, edit details, and roster statuses.</p>
+            </div>
+            <button class="btn btn-primary" onclick="openDrawer('doctor-drawer')">
+              <svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path></svg>
+              Add Consultant
+            </button>
+          </div>
+
+          <div class="table-controls">
+            <div class="search-box">
+              <input type="text" id="doctor-search-input" placeholder="Search doctors by name or specialty..." onkeyup="filterDoctors()">
+              <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+            </div>
+          </div>
+
+          <div class="table-responsive">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>Doctor ID</th>
+                  <th>Consultant Name</th>
+                  <th>Specialty Area</th>
+                  <th>Qualification</th>
+                  <th>Experience (Yrs)</th>
+                  <th>Contact Info</th>
+                  <th>Roster Status</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody id="doctors-table-body"></tbody>
+            </table>
+          </div>
+        </section>
+
+        <!-- ==========================================
+             SUBVIEW: APPOINTMENTS (NO INTERNAL FORM, FOR VIEWING ONLY)
+             ========================================== -->
+        <section id="view-appointments" class="view-section">
+          <div class="view-header">
+            <div class="view-header-title">
+              <h2>Consultation Appointments</h2>
+              <p>Supervise master calendar queues, scheduled slots, and active duties in real-time.</p>
+            </div>
+          </div>
+
+          <div class="table-responsive">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>Patient Name</th>
+                  <th>Consultant Specialty</th>
+                  <th>Appointment Date</th>
+                  <th>Session Time</th>
+                  <th>Symptoms / Purpose</th>
+                  <th>Status</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody id="appointments-table-body"></tbody>
+            </table>
+          </div>
+        </section>
+
+        <!-- ==========================================
+             SUBVIEW: BILLING
+             ========================================== -->
+        <section id="view-billing" class="view-section">
+          <div class="view-header">
+            <div class="view-header-title">
+              <h2>Invoices & Billing</h2>
+              <p>Orchestrate billing cycles, generate patient treatment records, and invoice status registers.</p>
+            </div>
+            <button class="btn btn-primary" onclick="openDrawer('invoice-drawer')">
+              <svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z"></path></svg>
+              Create New Invoice
+            </button>
+          </div>
+
+          <div class="billing-layout">
+            <div class="table-responsive">
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th>Invoice ID</th>
+                    <th>Patient Name</th>
+                    <th>Billing Date</th>
+                    <th>Treatments</th>
+                    <th>Invoice Total</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody id="billing-table-body"></tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+
+        <!-- ==========================================
+             SUBVIEW: PRESCRIPTIONS MONITOR
+             ========================================== -->
+        <section id="view-prescriptions" class="view-section">
+          <div class="view-header">
+            <div class="view-header-title">
+              <h2>Prescription Monitoring Portal</h2>
+              <p>Monitor doctor-issued patient prescriptions, drug volumes, and treatment dosages globally.</p>
+            </div>
+          </div>
+
+          <div class="table-controls">
+            <div class="search-box">
+              <input type="text" id="presc-search-input" placeholder="Search by patient, doctor, or diagnosis..." onkeyup="filterPrescriptions()">
+              <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+            </div>
+          </div>
+
+          <div class="table-responsive">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>Prescription ID</th>
+                  <th>Patient Name</th>
+                  <th>Prescribed Consultant</th>
+                  <th>Prescription Date</th>
+                  <th>Diagnosis</th>
+                  <th>Medicines & Dosages</th>
+                  <th>Notes</th>
+                </tr>
+              </thead>
+              <tbody id="prescriptions-table-body"></tbody>
+            </table>
+          </div>
+        </section>
+
+      </main>
+    </div>
+  </div>
+
+  <!-- Drawers / Modals overlay backdrop -->
+  <div class="overlay" id="drawer-overlay" onclick="closeAllDrawers()"></div>
+
+  <!-- 1. Register Patient Drawer -->
+  <div class="modal-drawer" id="patient-drawer">
+    <div class="drawer-header">
+      <span class="drawer-title">Register New Patient</span>
+      <button class="btn-icon" onclick="closeDrawer('patient-drawer')">
+        <svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+      </button>
+    </div>
+    <form id="patient-form" onsubmit="handleRegisterPatientSubmit(event)">
+      <div class="drawer-content">
+        <div class="form-grid">
+          <div class="form-group">
+            <label for="pat-name">Full Patient Name</label>
+            <input type="text" id="pat-name" placeholder="e.g. Johnathan Miller" required>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="pat-age">Age (Years)</label>
+              <input type="number" id="pat-age" min="0" max="150" required>
+            </div>
+            <div class="form-group">
+              <label for="pat-gender">Gender</label>
+              <select id="pat-gender" required>
+                <option value="" disabled selected>Select</option>
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+                <option value="Other">Other</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="pat-blood">Blood Group</label>
+              <select id="pat-blood" required>
+                <option value="" disabled selected>Select</option>
+                <option value="A+">A+</option><option value="A-">A-</option>
+                <option value="B+">B+</option><option value="B-">B-</option>
+                <option value="AB+">AB+</option><option value="AB-">AB-</option>
+                <option value="O+">O+</option><option value="O-">O-</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="pat-contact">Contact Number</label>
+              <input type="tel" id="pat-contact" placeholder="10-digit number" required>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="pat-email">Email ID (Sign-in account)</label>
+            <input type="email" id="pat-email" placeholder="e.g. pat@example.com" required>
+          </div>
+          <div class="form-group">
+            <label for="pat-admitted">Date of Admission</label>
+            <input type="date" id="pat-admitted" required>
+          </div>
+        </div>
+      </div>
+      <div class="drawer-footer">
+        <button type="button" class="btn btn-secondary" onclick="closeDrawer('patient-drawer')">Cancel</button>
+        <button type="submit" class="btn btn-primary">Save Patient</button>
+      </div>
+    </form>
+  </div>
+
+  <!-- 2. Add Doctor Drawer (Admin Side: Create Doctor Credentials details) -->
+  <div class="modal-drawer" id="doctor-drawer">
+    <div class="drawer-header">
+      <span class="drawer-title">Add Medical Consultant</span>
+      <button class="btn-icon" onclick="closeDrawer('doctor-drawer')">
+        <svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+      </button>
+    </div>
+    <form id="doctor-form" onsubmit="handleAddDoctorSubmit(event)">
+      <div class="drawer-content">
+        <div class="form-grid">
+          <div class="form-group">
+            <label for="doc-name">Doctor Full Name</label>
+            <input type="text" id="doc-name" placeholder="e.g. Dr. Sarah Alston" required>
+          </div>
+          
+          <div class="form-row">
+            <div class="form-group">
+              <label for="doc-specialty">Specialization</label>
+              <select id="doc-specialty" required>
+                <option value="" disabled selected>Select</option>
+                <option value="Cardiology">Cardiology</option>
+                <option value="Neurology">Neurology</option>
+                <option value="Pediatrics">Pediatrics</option>
+                <option value="Orthopedics">Orthopedics</option>
+                <option value="Oncology">Oncology</option>
+                <option value="General Medicine">General Medicine</option>
+                <option value="Dermatology">Dermatology</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="doc-qualification">Qualification</label>
+              <input type="text" id="doc-qualification" placeholder="e.g. MD, DM" required>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="doc-experience">Experience (Years)</label>
+              <input type="number" id="doc-experience" min="0" placeholder="e.g. 12" required>
+            </div>
+            <div class="form-group">
+              <label for="doc-contact">Phone Number</label>
+              <input type="tel" id="doc-contact" placeholder="e.g. +91 99999 88888" required>
+            </div>
+          </div>
+
+          <div class="form-group" style="border-top: 1px solid var(--border-color); padding-top: var(--space-md); margin-top: var(--space-xs);">
+            <label style="color: var(--primary); font-weight: 700;">Account Credentials</label>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="doc-email">Login Email ID</label>
+              <input type="email" id="doc-email" placeholder="e.g. sarah@auracare.com" required>
+            </div>
+            <div class="form-group">
+              <label for="doc-password">Temporary Password</label>
+              <input type="password" id="doc-password" placeholder="At least 6 characters" required>
+            </div>
+          </div>
+
+        </div>
+      </div>
+      <div class="drawer-footer">
+        <button type="button" class="btn btn-secondary" onclick="closeDrawer('doctor-drawer')">Cancel</button>
+        <button type="submit" class="btn btn-primary">Create Doctor</button>
+      </div>
+    </form>
+  </div>
+
+  <!-- 3. Edit Doctor Drawer (New Module) -->
+  <div class="modal-drawer" id="doctor-edit-drawer">
+    <div class="drawer-header">
+      <span class="drawer-title">Edit Doctor Credentials</span>
+      <button class="btn-icon" onclick="closeDrawer('doctor-edit-drawer')">
+        <svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+      </button>
+    </div>
+    <form id="doctor-edit-form" onsubmit="handleEditDoctorSubmit(event)">
+      <input type="hidden" id="edit-doc-id">
+      <div class="drawer-content">
+        <div class="form-grid">
+          <div class="form-group">
+            <label for="edit-doc-name">Doctor Name</label>
+            <input type="text" id="edit-doc-name" required>
+          </div>
+          
+          <div class="form-row">
+            <div class="form-group">
+              <label for="edit-doc-specialty">Specialization</label>
+              <select id="edit-doc-specialty" required>
+                <option value="Cardiology">Cardiology</option>
+                <option value="Neurology">Neurology</option>
+                <option value="Pediatrics">Pediatrics</option>
+                <option value="Orthopedics">Orthopedics</option>
+                <option value="Oncology">Oncology</option>
+                <option value="General Medicine">General Medicine</option>
+                <option value="Dermatology">Dermatology</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="edit-doc-qualification">Qualification</label>
+              <input type="text" id="edit-doc-qualification" required>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="edit-doc-experience">Experience (Years)</label>
+              <input type="number" id="edit-doc-experience" min="0" required>
+            </div>
+            <div class="form-group">
+              <label for="edit-doc-contact">Phone Number</label>
+              <input type="tel" id="edit-doc-contact" required>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="edit-doc-email">Registered Email</label>
+            <input type="email" id="edit-doc-email" required>
+          </div>
+        </div>
+      </div>
+      <div class="drawer-footer">
+        <button type="button" class="btn btn-secondary" onclick="closeDrawer('doctor-edit-drawer')">Cancel</button>
+        <button type="submit" class="btn btn-primary">Save Changes</button>
+      </div>
+    </form>
+  </div>
+
+  <!-- 4. Generate Invoice Drawer -->
+  <div class="modal-drawer" id="invoice-drawer">
+    <div class="drawer-header">
+      <span class="drawer-title">Generate Patient Invoice</span>
+      <button class="btn-icon" onclick="closeDrawer('invoice-drawer')">
+        <svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+      </button>
+    </div>
+    <form id="invoice-form" onsubmit="handleCreateInvoiceSubmit(event)">
+      <div class="drawer-content">
+        <div class="form-grid">
+          <div class="form-group">
+            <label for="inv-patient-select">Patient</label>
+            <select id="inv-patient-select" required></select>
+          </div>
+
+          <div class="form-group">
+            <label>Invoiced Clinical Services & Fees</label>
+            <div style="display: flex; flex-direction: column; gap: var(--space-sm); border: 1px solid var(--border-color); padding: var(--space-md); border-radius: var(--radius-md); background-color: #fafbfc;">
+              <div style="display: flex; justify-content: space-between; align-items: center;">
+                <label style="display: flex; align-items: center; gap: var(--space-sm); font-size: 0.85rem; font-weight: 500;">
+                  <input type="checkbox" id="srv-consult" value="1200" onchange="calculateInvoiceTotal()"> Consultation Fee
+                </label>
+                <span style="font-size: 0.85rem; font-weight: 600; color: var(--text-muted);">₹1,200</span>
+              </div>
+              <div style="display: flex; justify-content: space-between; align-items: center; border-top: 1px solid var(--border-color); padding-top: var(--space-sm); margin-top: var(--space-xs);">
+                <label style="display: flex; align-items: center; gap: var(--space-sm); font-size: 0.85rem; font-weight: 500;">
+                  <input type="checkbox" id="srv-icu" value="8500" onchange="calculateInvoiceTotal()"> ICU Ward Stay (Per Day)
+                </label>
+                <span style="font-size: 0.85rem; font-weight: 600; color: var(--text-muted);">₹8,500</span>
+              </div>
+              <div style="display: flex; justify-content: space-between; align-items: center; border-top: 1px solid var(--border-color); padding-top: var(--space-sm); margin-top: var(--space-xs);">
+                <label style="display: flex; align-items: center; gap: var(--space-sm); font-size: 0.85rem; font-weight: 500;">
+                  <input type="checkbox" id="srv-lab" value="3500" onchange="calculateInvoiceTotal()"> Comprehensive Lab Screening
+                </label>
+                <span style="font-size: 0.85rem; font-weight: 600; color: var(--text-muted);">₹3,500</span>
+              </div>
+              <div style="display: flex; justify-content: space-between; align-items: center; border-top: 1px solid var(--border-color); padding-top: var(--space-sm); margin-top: var(--space-xs);">
+                <label style="display: flex; align-items: center; gap: var(--space-sm); font-size: 0.85rem; font-weight: 500;">
+                  <input type="checkbox" id="srv-pharmacy" value="2200" onchange="calculateInvoiceTotal()"> Specialized Pharmacy / Meds
+                </label>
+                <span style="font-size: 0.85rem; font-weight: 600; color: var(--text-muted);">₹2,200</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="inv-status">Payment Status</label>
+              <select id="inv-status" required>
+                <option value="Paid">Paid</option>
+                <option value="Unpaid">Unpaid</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>Estimated Total</label>
+              <div id="inv-total-display" style="font-size: 1.4rem; font-weight: 700; color: var(--primary); padding-top: 6px;">₹0</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="drawer-footer">
+        <button type="button" class="btn btn-secondary" onclick="closeDrawer('invoice-drawer')">Cancel</button>
+        <button type="submit" class="btn btn-primary">Generate Invoice</button>
+      </div>
+    </form>
+  </div>
+
+  <!-- Detailed Invoice PDF-Like Preview Modal -->
+  <div class="modal-standard" id="invoice-modal">
+    <div class="modal-header">
+      <h3>Invoice Details</h3>
+      <button class="btn-icon" onclick="closeStandardModal('invoice-modal')">
+        <svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+      </button>
+    </div>
+    <div class="modal-content">
+      <div class="billing-invoice-view" id="invoice-print-area">
+        <div class="invoice-ribbon" id="modal-invoice-status-badge"></div>
+
+        <div class="invoice-header-block">
+          <div class="invoice-logo-meta">
+            <h3>ShreRah Hospital</h3>
+            <p>12, Clinical Boulevard, Sector 4, Bangalore</p>
+            <p>Contact: +91 80 4400 9900 | support@shrerah.com</p>
+          </div>
+          <div class="invoice-number-block">
+            <h4 id="modal-invoice-number">#INV-1029</h4>
+            <p>Date: <span id="modal-invoice-date">May 31, 2026</span></p>
+          </div>
+        </div>
+
+        <div class="invoice-parties">
+          <div class="invoice-party">
+            <h5>Billed To</h5>
+            <p><strong id="modal-patient-name">Ronald Henderson</strong></p>
+            <p>Age/Gender: <span id="modal-patient-meta">42 / Male</span></p>
+            <p>Blood Type: <span id="modal-patient-blood">O+</span></p>
+            <p>Contact: <span id="modal-patient-contact">+91 94488 23112</span></p>
+          </div>
+          <div class="invoice-party">
+            <h5>Billing Representative</h5>
+            <p><strong>ShreRah Finance Desk</strong></p>
+            <p>Employee Ref: #AC-AD-88</p>
+            <p>Payment Mode: Electronic / Cash</p>
+          </div>
+        </div>
+
+        <table class="invoice-table">
+          <thead>
+            <tr>
+              <th>Service Item / Medical Unit Description</th>
+              <th class="text-right">Unit Rate</th>
+            </tr>
+          </thead>
+          <tbody id="modal-invoice-items"></tbody>
+        </table>
+
+        <div class="invoice-summary-block">
+          <table class="invoice-summary-table">
+            <tr>
+              <td class="lbl">Subtotal</td>
+              <td class="val" id="modal-invoice-subtotal">₹0</td>
+            </tr>
+            <tr>
+              <td class="lbl">CGST / SGST (0%)</td>
+              <td class="val">₹0</td>
+            </tr>
+            <tr class="grand-total">
+              <td class="lbl">Grand Total</td>
+              <td class="val" id="modal-invoice-total">₹0</td>
+            </tr>
+          </table>
+        </div>
+
+        <div class="invoice-footer-block">
+          <p>Thank you for choosing ShreRah Hospital. This is a computer-generated transaction record.</p>
+        </div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-secondary" onclick="closeStandardModal('invoice-modal')">Close</button>
+      <button class="btn btn-primary" onclick="printInvoice()">Print Invoice</button>
+    </div>
+  </div>
+
+  <div class="toast-container" id="toast-container"></div>
+
+  <script src="/js/common.js"></script>
+  <script src="/js/admin.js"></script>
+</body>
+</html>

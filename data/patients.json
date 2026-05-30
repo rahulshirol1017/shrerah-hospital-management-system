@@ -1,0 +1,54 @@
+[
+  {
+    "id": "PAT-1001",
+    "name": "Ronald M. Henderson",
+    "age": 42,
+    "gender": "Male",
+    "dob": "1984-03-12",
+    "height": 182,
+    "weight": 80,
+    "bloodGroup": "O+",
+    "contact": "9448823112",
+    "email": "ronald@example.com",
+    "admittedDate": "2026-05-24"
+  },
+  {
+    "id": "PAT-1002",
+    "name": "Eleanor S. Vance",
+    "age": 29,
+    "gender": "Female",
+    "dob": "1997-08-25",
+    "height": 164,
+    "weight": 56,
+    "bloodGroup": "AB-",
+    "contact": "9845067118",
+    "email": "patient@example.com",
+    "admittedDate": "2026-05-28"
+  },
+  {
+    "id": "PAT-1003",
+    "name": "Aarav N. Patel",
+    "age": 61,
+    "gender": "Male",
+    "dob": "1965-11-05",
+    "height": 170,
+    "weight": 78,
+    "bloodGroup": "B+",
+    "contact": "9900244321",
+    "email": "aarav@example.com",
+    "admittedDate": "2026-05-15"
+  },
+  {
+    "id": "PAT-1004",
+    "name": "Miriam E. Sterling",
+    "age": 53,
+    "gender": "Female",
+    "dob": "1973-05-18",
+    "height": 158,
+    "weight": 62,
+    "bloodGroup": "A+",
+    "contact": "9886011998",
+    "email": "miriam@example.com",
+    "admittedDate": "2026-05-29"
+  }
+]

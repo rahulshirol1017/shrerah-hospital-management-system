@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ShreRah Hospital - Patient Care Workspace</title>
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/patient.css">
+</head>
+<body>
+
+  <div id="dashboard-panel">
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar" id="sidebar-nav">
+      <div>
+        <div class="sidebar-header">
+          <div class="logo-container">
+            <svg class="logo-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 10.5V20a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2v-9.5M3 10h18M12 4v12m-4-6h8"></path>
+            </svg>
+            <span class="hospital-name">ShreRah<span> Hospital</span></span>
+          </div>
+        </div>
+        
+        <nav class="sidebar-menu">
+          <button class="sidebar-link active" onclick="switchView('pat-profile', this)">
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path></svg>
+            <span>My Profile</span>
+          </button>
+          
+          <button class="sidebar-link" onclick="switchView('pat-doctors', this)">
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>
+            <span>Doctors</span>
+          </button>
+          
+          <button class="sidebar-link" onclick="switchView('pat-book', this)">
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
+            <span>Book Appointment</span>
+          </button>
+          
+          <button class="sidebar-link" onclick="switchView('pat-history', this)">
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path></svg>
+            <span>Appointment History</span>
+          </button>
+ 
+          <button class="sidebar-link" onclick="switchView('pat-prescriptions', this)">
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
+            <span>My Prescriptions</span>
+          </button>
+        </nav>
+      </div>
+
+      <div class="sidebar-footer">
+        <button class="sidebar-logout-btn" onclick="handleLogOut()">
+          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"></path></svg>
+          <span>Sign Out</span>
+        </button>
+      </div>
+    </aside>
+
+    <!-- Main Content Workspace -->
+    <div class="dashboard-body">
+      <header class="dashboard-header">
+        <div class="header-title-section">
+          <button class="menu-toggle btn-icon" id="toggle-sidebar-btn" aria-label="Toggle Sidebar">
+            <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+          </button>
+          <h1 class="header-title" id="current-view-title">My Patient Profile</h1>
+        </div>
+
+        <div class="header-user-section">
+          <div class="header-date-time">
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+            <span id="date-string">Sunday, May 31, 2026</span>
+          </div>
+
+          <div class="header-user-profile">
+            <div class="user-avatar" id="pat-header-avatar">EV</div>
+            <div class="user-info">
+              <span class="user-name" id="pat-header-fullname">Eleanor Vance</span>
+              <span class="user-role">Patient Portal</span>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <main class="dashboard-content">
+
+        <!-- ==========================================
+             SUBVIEW: MY PROFILE
+             ========================================== -->
+        <section id="view-pat-profile" class="view-section active">
+          <div class="view-header">
+            <div class="view-header-title">
+              <h2>My Health Portfolio</h2>
+              <p>View your biometric logs, demographic data, and update contact credentials.</p>
+            </div>
+            <button class="btn btn-primary" onclick="openPatientEditDrawer()">
+              <svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="margin-right: 4px;"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path></svg>
+              Edit Profile
+            </button>
+          </div>
+
+          <div class="patient-profile-card">
+            <div class="profile-card-banner"></div>
+            <div class="profile-avatar-wrap">
+              <div class="profile-avatar-large" id="pat-prof-avatar">EV</div>
+              <div class="profile-name-badge">
+                <h3 id="pat-prof-name">Eleanor Vance</h3>
+                <p>Patient ID: <span id="pat-prof-id" style="font-family: monospace; font-weight: 700; color: var(--primary);">PAT-1002</span></p>
+              </div>
+            </div>
+
+            <div class="profile-details-grid">
+              <div class="profile-detail-box">
+                <h5>Gender</h5>
+                <p id="pat-prof-gender">Female</p>
+              </div>
+              <div class="profile-detail-box">
+                <h5>Date of Birth</h5>
+                <p id="pat-prof-dob">August 25, 1997</p>
+              </div>
+              <div class="profile-detail-box">
+                <h5>Blood Group</h5>
+                <p id="pat-prof-blood">AB-</p>
+              </div>
+              <div class="profile-detail-box">
+                <h5>Physical Height</h5>
+                <p id="pat-prof-height">164 cm</p>
+              </div>
+              <div class="profile-detail-box">
+                <h5>Physical Weight</h5>
+                <p id="pat-prof-weight">56 kg</p>
+              </div>
+              <div class="profile-detail-box">
+                <h5>Contact Number</h5>
+                <p id="pat-prof-contact">+91 98450 67118</p>
+              </div>
+              <div class="profile-detail-box">
+                <h5>Admission Date</h5>
+                <p id="pat-prof-admitted">2026-05-28</p>
+              </div>
+              <div class="profile-detail-box" style="grid-column: span 2;">
+                <h5>Registered Email ID</h5>
+                <p id="pat-prof-email">patient@example.com</p>
+              </div>
+              <div class="profile-detail-box" style="grid-column: span 3; border-top: 1px solid var(--border-color); padding-top: var(--space-md); margin-top: var(--space-sm);">
+                <h5>Biographical / Health Notes</h5>
+                <p id="pat-prof-desc" style="font-style: italic; color: var(--text-muted); line-height: 1.6;">No bio details added yet.</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ==========================================
+             SUBVIEW: DOCTORS PANEL
+             ========================================== -->
+        <section id="view-pat-doctors" class="view-section">
+          <div class="view-header">
+            <div class="view-header-title">
+              <h2>Our Clinical Panel Consultants</h2>
+              <p>Browse specialists, consulting fees, duty roster hours, and secure slot sessions directly.</p>
+            </div>
+          </div>
+          <div class="patient-doctor-grid" id="pat-view-doctors-container"></div>
+        </section>
+
+        <!-- ==========================================
+             SUBVIEW: BOOK APPOINTMENT
+             ========================================== -->
+        <section id="view-pat-book" class="view-section">
+          <div class="view-header">
+            <div class="view-header-title">
+              <h2>Schedule Consultation Slot</h2>
+              <p>Reserve an appointment date and slot with our active clinical specialists immediately.</p>
+            </div>
+          </div>
+
+          <div class="appointment-booking-layout" style="grid-template-columns: 1.1fr 0.9fr;">
+            <div class="booking-form-card">
+              <h3>Confirm Scheduling Options</h3>
+              <form id="pat-appointment-form" onsubmit="handlePatientBookSubmit(event)">
+                <div class="form-grid">
+                  <div class="form-group">
+                    <label>Billed Account Name</label>
+                    <input type="text" id="pat-book-selfname" disabled style="background-color: #f1f5f9; color: var(--text-muted); font-weight: 600;">
+                  </div>
+
+                  <div class="form-group">
+                    <label for="pat-book-docselect">Select Consultant Specialist</label>
+                    <select id="pat-book-docselect" required>
+                      <option value="" disabled selected>Select active doctor</option>
+                    </select>
+                  </div>
+
+                  <div class="form-row">
+                    <div class="form-group">
+                      <label for="pat-book-date">Appointed Date</label>
+                      <input type="date" id="pat-book-date" required>
+                    </div>
+                    <div class="form-group">
+                      <label for="pat-book-time">Session Time</label>
+                      <input type="time" id="pat-book-time" required>
+                    </div>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="pat-book-reason">Symptoms / Reason</label>
+                    <textarea id="pat-book-reason" rows="4" placeholder="Briefly describe what symptoms or purpose you are booking for..." required></textarea>
+                  </div>
+
+                  <button type="submit" class="btn btn-primary">Request Booking Slot</button>
+                </div>
+              </form>
+            </div>
+
+            <!-- Booking Help Card -->
+            <div style="background-color: var(--bg-card); padding: var(--space-xl); border-radius: var(--radius-md); border: 1px solid var(--border-color); display: flex; flex-direction: column; justify-content: space-between; height: 100%;">
+              <div>
+                <h3 style="font-size: 1.2rem; color: var(--primary); margin-bottom: var(--space-md); font-family: var(--font-heading);">Schedule Disclaimers</h3>
+                <ul style="display: flex; flex-direction: column; gap: var(--space-md); font-size: 0.85rem; color: var(--text-muted); padding-left: 0;">
+                  <li style="display: flex; gap: var(--space-sm); align-items: flex-start;">
+                    <svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="color: var(--accent); flex-shrink: 0; margin-top: 2px;"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                    <span>Only doctors currently <strong>On Duty</strong> will appear as booking selections.</span>
+                  </li>
+                  <li style="display: flex; gap: var(--space-sm); align-items: flex-start;">
+                    <svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="color: var(--accent); flex-shrink: 0; margin-top: 2px;"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                    <span>Appointments are verified instantly by administrative staff.</span>
+                  </li>
+                  <li style="display: flex; gap: var(--space-sm); align-items: flex-start;">
+                    <svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="color: var(--accent); flex-shrink: 0; margin-top: 2px;"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                    <span>Please reach the consulting rooms 15 minutes before your scheduled slot.</span>
+                  </li>
+                </ul>
+              </div>
+              <div style="border-top: 1px solid var(--border-color); padding-top: var(--space-md); margin-top: var(--space-lg); text-align: center;">
+                <span style="font-size: 0.75rem; text-transform: uppercase; color: var(--text-light); font-weight: 600; display: block; margin-bottom: var(--space-xs);">Emergency Support</span>
+                <span style="font-size: 1.1rem; font-weight: 700; color: var(--primary-dark);">+91 80 4400 9999</span>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ==========================================
+             SUBVIEW: APPOINTMENT HISTORY
+             ========================================== -->
+        <section id="view-pat-history" class="view-section">
+          <div class="view-header">
+            <div class="view-header-title">
+              <h2>My Consultation History</h2>
+              <p>View list and tracking records of your scheduled and past appointments.</p>
+            </div>
+          </div>
+
+          <div class="table-responsive">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>Appointment ID</th>
+                  <th>Consultant Specialist</th>
+                  <th>Appointment Date</th>
+                  <th>Session Time</th>
+                  <th>Consultation Purpose</th>
+                  <th>Status</th>
+                </tr>
+              </thead>
+              <tbody id="pat-history-table-body"></tbody>
+            </table>
+          </div>
+        </section>
+
+        <!-- ==========================================
+             SUBVIEW: MY PRESCRIPTIONS
+             ========================================== -->
+        <section id="view-pat-prescriptions" class="view-section">
+          <div class="view-header">
+            <div class="view-header-title">
+              <h2>My Issued Prescriptions</h2>
+              <p>Review comprehensive medicines list, dosages, diagnostic findings, and advice issued to you by active specialists.</p>
+            </div>
+          </div>
+
+          <div id="patient-prescriptions-container">
+            <!-- Dynamic prescription detail cards generated in patient.js -->
+          </div>
+        </section>
+
+      </main>
+    </div>
+  </div>
+
+  <!-- Drawers / Modals overlay backdrop -->
+  <div class="overlay" id="drawer-overlay" onclick="closeAllDrawers()"></div>
+
+  <!-- Edit Profile Drawer -->
+  <div class="modal-drawer" id="patient-edit-drawer">
+    <div class="drawer-header">
+      <span class="drawer-title">Edit My Profile</span>
+      <button class="btn-icon" onclick="closeDrawer('patient-edit-drawer')">
+        <svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+      </button>
+    </div>
+    <form id="patient-edit-form" onsubmit="handlePatientEditSubmit(event)">
+      <div class="drawer-content">
+        <div class="form-grid">
+          <div class="form-group">
+            <label>Non-Editable Records</label>
+            <div style="background-color: #f1f5f9; padding: var(--space-md); border-radius: var(--radius-md); border: 1px solid var(--border-color); font-size: 0.85rem; display: flex; flex-direction: column; gap: var(--space-xs);">
+              <div>Patient ID: <strong id="edit-pat-id-static">PAT-1002</strong></div>
+              <div>Registration Date: <strong id="edit-pat-admitted-static">2026-05-28</strong></div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="edit-pat-name">Full Name</label>
+            <input type="text" id="edit-pat-name" placeholder="e.g. Eleanor Vance" required>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="edit-pat-height">Height (cm)</label>
+              <input type="number" id="edit-pat-height" min="10" max="300" required>
+            </div>
+            <div class="form-group">
+              <label for="edit-pat-weight">Weight (kg)</label>
+              <input type="number" id="edit-pat-weight" min="1" max="500" required>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="edit-pat-contact">Contact Number</label>
+            <input type="tel" id="edit-pat-contact" placeholder="10-digit number" required>
+          </div>
+          <div class="form-group">
+            <label for="edit-pat-email">Email ID</label>
+            <input type="email" id="edit-pat-email" placeholder="e.g. patient@example.com" required>
+          </div>
+          <div class="form-group">
+            <label for="edit-pat-desc">Health Bio / Description</label>
+            <textarea id="edit-pat-desc" rows="4" placeholder="Brief notes about medical history or ongoing complaints..."></textarea>
+          </div>
+        </div>
+      </div>
+      <div class="drawer-footer">
+        <button type="button" class="btn btn-secondary" onclick="closeDrawer('patient-edit-drawer')">Cancel</button>
+        <button type="submit" class="btn btn-primary">Save Changes</button>
+      </div>
+    </form>
+  </div>
+
+  <div class="toast-container" id="toast-container"></div>
+
+  <script src="/js/common.js"></script>
+  <script src="/js/patient.js"></script>
+</body>
+</html>

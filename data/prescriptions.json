@@ -1,0 +1,59 @@
+[
+  {
+    "id": "PRSC-5001",
+    "patientId": "PAT-1002",
+    "doctorId": "DOC-2001",
+    "appointmentId": "APT-3002",
+    "date": "2026-05-31",
+    "diagnosis": "General Fatigue & Vitamin Deficiency",
+    "medicines": [
+      {
+        "name": "Vitamin D3 60K",
+        "dosage": "1 Capsule",
+        "frequency": "Once Weekly",
+        "duration": "8 Weeks"
+      },
+      {
+        "name": "Zincovit Multi-vit",
+        "dosage": "1 Tablet",
+        "frequency": "Once Daily",
+        "duration": "30 Days"
+      }
+    ],
+    "notes": "Get adequate sunlight and rest."
+  },
+  {
+    "id": "PRSC-5002",
+    "patientId": "PAT-1001",
+    "doctorId": "DOC-2001",
+    "appointmentId": "APT-3001",
+    "date": "2026-05-30",
+    "diagnosis": "fever",
+    "medicines": [
+      {
+        "name": "dolo650",
+        "dosage": "1",
+        "frequency": "3",
+        "duration": "7"
+      }
+    ],
+    "notes": "do not eat spices"
+  },
+  {
+    "id": "PRSC-5003",
+    "patientId": "PAT-1001",
+    "doctorId": "DOC-2001",
+    "appointmentId": "APT-3001",
+    "date": "2026-05-30",
+    "diagnosis": "asthma",
+    "medicines": [
+      {
+        "name": "azethromine 120mg",
+        "dosage": "1tab",
+        "frequency": "2 times",
+        "duration": "5 days"
+      }
+    ],
+    "notes": ""
+  }
+]

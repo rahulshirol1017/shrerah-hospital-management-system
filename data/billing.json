@@ -1,0 +1,40 @@
+[
+  {
+    "id": "INV-4001",
+    "patientId": "PAT-1001",
+    "date": "2026-05-30",
+    "services": [
+      {
+        "name": "Consultation Fee",
+        "price": 1200
+      },
+      {
+        "name": "Comprehensive Lab Screening",
+        "price": 3500
+      }
+    ],
+    "total": 4700,
+    "status": "Paid"
+  },
+  {
+    "id": "INV-4002",
+    "patientId": "PAT-1003",
+    "date": "2026-05-30",
+    "services": [
+      {
+        "name": "Consultation Fee",
+        "price": 1200
+      },
+      {
+        "name": "ICU Ward Stay (Per Day)",
+        "price": 8500
+      },
+      {
+        "name": "Specialized Pharmacy / Meds",
+        "price": 2200
+      }
+    ],
+    "total": 11900,
+    "status": "Paid"
+  }
+]

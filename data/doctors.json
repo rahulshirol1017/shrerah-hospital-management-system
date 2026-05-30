@@ -1,0 +1,42 @@
+[
+  {
+    "id": "DOC-2001",
+    "name": "Dr. Sarah Alston",
+    "specialty": "Cardiology",
+    "experience": 16,
+    "contact": "+91 99888 77771",
+    "status": "On Duty",
+    "fee": 1500,
+    "email": "sarah@auracare.com"
+  },
+  {
+    "id": "DOC-2002",
+    "name": "Dr. Vikram K. Malhotra",
+    "specialty": "Neurology",
+    "experience": 18,
+    "contact": "+91 99888 77772",
+    "status": "On Duty",
+    "fee": 1800,
+    "email": "vikram@auracare.com"
+  },
+  {
+    "id": "DOC-2003",
+    "name": "Dr. David E. Thorne",
+    "specialty": "Orthopedics",
+    "experience": 12,
+    "contact": "+91 99888 77773",
+    "status": "On Leave",
+    "fee": 1200,
+    "email": "david@auracare.com"
+  },
+  {
+    "id": "DOC-2004",
+    "name": "Dr. Anita H. Desai",
+    "specialty": "Pediatrics",
+    "experience": 9,
+    "contact": "+91 99888 77774",
+    "status": "On Duty",
+    "fee": 1000,
+    "email": "anita@auracare.com"
+  }
+]

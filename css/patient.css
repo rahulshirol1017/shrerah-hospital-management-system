@@ -1,0 +1,227 @@
+/* ==========================================
+   PATIENT PORTAL SPECIFIC STYLES
+   ========================================== */
+
+@import url('admin.css');
+
+.patient-profile-card {
+  background-color: var(--bg-card);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-color);
+  box-shadow: var(--shadow-sm);
+  overflow: hidden;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.profile-card-banner {
+  background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+  height: 120px;
+}
+
+.profile-avatar-wrap {
+  display: flex;
+  margin-top: -60px;
+  padding: 0 var(--space-xl);
+  align-items: flex-end;
+  gap: var(--space-lg);
+  margin-bottom: var(--space-xl);
+}
+
+.profile-avatar-large {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  background-color: var(--bg-card);
+  border: 4px solid var(--bg-card);
+  box-shadow: var(--shadow-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.75rem;
+  font-weight: 800;
+  color: var(--primary);
+}
+
+.profile-name-badge h3 {
+  font-size: 1.65rem;
+  font-weight: 700;
+}
+.profile-name-badge p {
+  color: var(--text-muted);
+  font-size: 0.95rem;
+}
+
+.profile-details-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-xl);
+  padding: 0 var(--space-xl) var(--space-xl) var(--space-xl);
+}
+
+.profile-detail-box {
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: var(--space-md);
+  background-color: #fafbfc;
+}
+.profile-detail-box h5 {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--text-light);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 4px;
+}
+.profile-detail-box p {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--primary-dark);
+}
+
+/* Doctors panels for patients */
+.patient-doctor-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-lg);
+}
+
+.patient-doc-card {
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: var(--space-lg);
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 250px;
+  transition: all var(--transition-normal);
+}
+.patient-doc-card:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-lg);
+  border-color: var(--primary-light);
+}
+
+.pat-doc-header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+}
+.pat-doc-avatar {
+  width: 52px;
+  height: 52px;
+  border-radius: var(--radius-md);
+  background-color: rgba(15, 76, 129, 0.05);
+  color: var(--primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+  font-weight: 700;
+  border: 1px solid rgba(15, 76, 129, 0.1);
+}
+.pat-doc-meta h4 { font-size: 1.05rem; font-weight: 700; }
+.pat-doc-meta p { font-size: 0.8rem; color: var(--text-muted); }
+
+.pat-doc-body {
+  border-top: 1px solid var(--border-color);
+  border-bottom: 1px solid var(--border-color);
+  padding: var(--space-md) 0;
+  margin: var(--space-md) 0;
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.85rem;
+}
+.pat-doc-body div span { display: block; font-size: 0.75rem; color: var(--text-light); }
+.pat-doc-body div p { font-weight: 600; }
+
+.pat-doc-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Patient's Prescription detail layout card */
+.prescription-patient-card {
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: var(--space-lg);
+  box-shadow: var(--shadow-sm);
+  margin-bottom: var(--space-lg);
+}
+
+.presc-card-header {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: var(--space-sm);
+  margin-bottom: var(--space-md);
+}
+.presc-card-header h4 {
+  font-size: 1.15rem;
+  color: var(--primary);
+}
+.presc-card-header p {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+.presc-card-grid {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: var(--space-xl);
+  margin-bottom: var(--space-md);
+}
+
+.presc-card-meta {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+
+.presc-meta-item span {
+  display: block;
+  font-size: 0.75rem;
+  color: var(--text-light);
+  text-transform: uppercase;
+  font-weight: 600;
+}
+.presc-meta-item p {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--text-main);
+}
+
+.presc-medicines-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+.presc-medicines-table th {
+  background-color: var(--bg-main);
+  padding: 0.5rem;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  text-align: left;
+}
+.presc-medicines-table td {
+  padding: 0.65rem 0.5rem;
+  font-size: 0.85rem;
+  border-bottom: 1px solid var(--border-color);
+}
+.presc-medicines-table tr:last-child td {
+  border-bottom: none;
+}
+
+@media (max-width: 992px) {
+  .patient-doctor-grid { grid-template-columns: repeat(2, 1fr); }
+  .profile-details-grid { grid-template-columns: repeat(2, 1fr); }
+  .presc-card-grid { grid-template-columns: 1fr; gap: var(--space-md); }
+}
+@media (max-width: 768px) {
+  .patient-doctor-grid { grid-template-columns: 1fr; }
+  .profile-details-grid { grid-template-columns: 1fr; }
+}
