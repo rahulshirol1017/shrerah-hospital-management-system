@@ -8,7 +8,7 @@ require('dotenv').config();
 
 const app = express();
 const PORT = process.env.PORT || 3000;
-const SESSION_SECRET = process.env.SESSION_SECRET || 'auracare-secret-key-1029';
+const SESSION_SECRET = process.env.SESSION_SECRET || 'mediflow-secret-key-1029';
 
 // Setup Middleware
 app.use(express.json());
@@ -347,7 +347,7 @@ app.post('/api/doctors', isAuthenticated, hasRole(['Admin']), async (req, res) =
     const emailLower = email.trim().toLowerCase();
     const duplicate = await User.findOne({ email: emailLower });
     if (duplicate) {
-      return res.status(400).json({ error: "Email address already registered in AuraCare database." });
+      return res.status(400).json({ error: "Email address already registered in MediFlow database." });
     }
 
     const lastDoc = await Doctor.findOne().sort({ id: -1 });
@@ -742,7 +742,7 @@ app.use((err, req, res, next) => {
 app.listen(PORT, async () => {
   await db.init();
   console.log(`==========================================`);
-  console.log(` AuraCare HMS server is running on:`);
+  console.log(` MediFlow HMS server is running on:`);
   console.log(` http://localhost:${PORT}`);
   console.log(`==========================================`);
 });

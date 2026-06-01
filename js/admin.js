@@ -583,7 +583,7 @@ function printInvoice() {
   printWindow.document.write(`
     <html>
       <head>
-        <title>Print Invoice - AuraCare</title>
+        <title>Print Invoice - MediFlow</title>
         <style>
           body { font-family: 'Inter', sans-serif; padding: 40px; color: #1e293b; }
           .badge { display: inline-block; padding: 4px 12px; border-radius: 999px; font-size: 11px; font-weight: bold; text-transform: uppercase; }

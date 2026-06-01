@@ -7,7 +7,7 @@
     "contact": "+91 99888 77771",
     "status": "On Duty",
     "fee": 1500,
-    "email": "sarah@auracare.com"
+    "email": "sarah@mediflow.com"
   },
   {
     "id": "DOC-2002",
@@ -17,7 +17,7 @@
     "contact": "+91 99888 77772",
     "status": "On Duty",
     "fee": 1800,
-    "email": "vikram@auracare.com"
+    "email": "vikram@mediflow.com"
   },
   {
     "id": "DOC-2003",
@@ -27,7 +27,7 @@
     "contact": "+91 99888 77773",
     "status": "On Leave",
     "fee": 1200,
-    "email": "david@auracare.com"
+    "email": "david@mediflow.com"
   },
   {
     "id": "DOC-2004",
@@ -37,6 +37,6 @@
     "contact": "+91 99888 77774",
     "status": "On Duty",
     "fee": 1000,
-    "email": "anita@auracare.com"
+    "email": "anita@mediflow.com"
   }
 ]

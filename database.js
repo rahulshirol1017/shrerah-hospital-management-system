@@ -106,11 +106,11 @@ const Prescription = mongoose.model('Prescription', prescriptionSchema);
 
 // Defaults for Seeding
 const DEFAULT_USERS = [
-  { id: "ADMIN-88", email: "admin@auracare.com", password: "admin123", role: "Admin", name: "Rahul Shirol" },
-  { id: "DOC-2001", email: "sarah@auracare.com", password: "doctor123", role: "Doctor", name: "Dr. Sarah Alston" },
-  { id: "DOC-2002", email: "vikram@auracare.com", password: "doctor123", role: "Doctor", name: "Dr. Vikram K. Malhotra" },
-  { id: "DOC-2003", email: "david@auracare.com", password: "doctor123", role: "Doctor", name: "Dr. David E. Thorne" },
-  { id: "DOC-2004", email: "anita@auracare.com", password: "doctor123", role: "Doctor", name: "Dr. Anita H. Desai" },
+  { id: "ADMIN-88", email: "admin@mediflow.com", password: "admin123", role: "Admin", name: "Rahul Shirol" },
+  { id: "DOC-2001", email: "sarah@mediflow.com", password: "doctor123", role: "Doctor", name: "Dr. Sarah Alston" },
+  { id: "DOC-2002", email: "vikram@mediflow.com", password: "doctor123", role: "Doctor", name: "Dr. Vikram K. Malhotra" },
+  { id: "DOC-2003", email: "david@mediflow.com", password: "doctor123", role: "Doctor", name: "Dr. David E. Thorne" },
+  { id: "DOC-2004", email: "anita@mediflow.com", password: "doctor123", role: "Doctor", name: "Dr. Anita H. Desai" },
   { id: "PAT-1001", email: "ronald@example.com", password: "password123", role: "Patient", name: "Ronald M. Henderson" },
   { id: "PAT-1002", email: "patient@example.com", password: "password123", role: "Patient", name: "Eleanor S. Vance" },
   { id: "PAT-1003", email: "aarav@example.com", password: "password123", role: "Patient", name: "Aarav N. Patel" },
@@ -125,10 +125,10 @@ const DEFAULT_PATIENTS = [
 ];
 
 const DEFAULT_DOCTORS = [
-  { id: "DOC-2001", name: "Dr. Sarah Alston", specialty: "Cardiology", qualification: "MD, DM", experience: 16, contact: "+91 99888 77771", status: "On Duty", fee: 1500, email: "sarah@auracare.com" },
-  { id: "DOC-2002", name: "Dr. Vikram K. Malhotra", specialty: "Neurology", qualification: "MD, DNB", experience: 18, contact: "+91 99888 77772", status: "On Duty", fee: 1800, email: "vikram@auracare.com" },
-  { id: "DOC-2003", name: "Dr. David E. Thorne", specialty: "Orthopedics", qualification: "MS, MCh", experience: 12, contact: "+91 99888 77773", status: "On Leave", fee: 1200, email: "david@auracare.com" },
-  { id: "DOC-2004", name: "Dr. Anita H. Desai", specialty: "Pediatrics", qualification: "MD, DCH", experience: 9, contact: "+91 99888 77774", status: "On Duty", fee: 1000, email: "anita@auracare.com" }
+  { id: "DOC-2001", name: "Dr. Sarah Alston", specialty: "Cardiology", qualification: "MD, DM", experience: 16, contact: "+91 99888 77771", status: "On Duty", fee: 1500, email: "sarah@mediflow.com" },
+  { id: "DOC-2002", name: "Dr. Vikram K. Malhotra", specialty: "Neurology", qualification: "MD, DNB", experience: 18, contact: "+91 99888 77772", status: "On Duty", fee: 1800, email: "vikram@mediflow.com" },
+  { id: "DOC-2003", name: "Dr. David E. Thorne", specialty: "Orthopedics", qualification: "MS, MCh", experience: 12, contact: "+91 99888 77773", status: "On Leave", fee: 1200, email: "david@mediflow.com" },
+  { id: "DOC-2004", name: "Dr. Anita H. Desai", specialty: "Pediatrics", qualification: "MD, DCH", experience: 9, contact: "+91 99888 77774", status: "On Duty", fee: 1000, email: "anita@mediflow.com" }
 ];
 
 const DEFAULT_APPOINTMENTS = [

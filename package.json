@@ -1,5 +1,5 @@
 {
-  "name": "auracare-hms",
+  "name": "mediflow-hms",
   "version": "1.0.0",
   "description": "Premium Full-Stack Hospital Management System Portal",
   "main": "server.js",
@@ -14,6 +14,6 @@
     "mongodb": "^7.2.0",
     "mongoose": "^8.4.1"
   },
-  "author": "Antigravity AuraCare Team",
+  "author": "Antigravity MediFlow Team",
   "license": "ISC"
 }

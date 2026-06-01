@@ -1,35 +1,35 @@
 [
   {
     "id": "ADMIN-88",
-    "email": "admin@auracare.com",
+    "email": "admin@mediflow.com",
     "password": "admin123",
     "role": "Admin",
     "name": "Rahul Shirol"
   },
   {
     "id": "DOC-2001",
-    "email": "sarah@auracare.com",
+    "email": "sarah@mediflow.com",
     "password": "doctor123",
     "role": "Doctor",
     "name": "Dr. Sarah Alston"
   },
   {
     "id": "DOC-2002",
-    "email": "vikram@auracare.com",
+    "email": "vikram@mediflow.com",
     "password": "doctor123",
     "role": "Doctor",
     "name": "Dr. Vikram K. Malhotra"
   },
   {
     "id": "DOC-2003",
-    "email": "david@auracare.com",
+    "email": "david@mediflow.com",
     "password": "doctor123",
     "role": "Doctor",
     "name": "Dr. David E. Thorne"
   },
   {
     "id": "DOC-2004",
-    "email": "anita@auracare.com",
+    "email": "anita@mediflow.com",
     "password": "doctor123",
     "role": "Doctor",
     "name": "Dr. Anita H. Desai"
